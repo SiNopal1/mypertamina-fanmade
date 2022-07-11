@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beli Bensin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('assets/green-color.png');
+        }
+
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #0a7041;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: center;
+        }
+
+        .white-color-text {
+            color: white;
+        }
+
+        html,
+        body {
+            margin: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 14px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Page [S] -->
+
+    <div class="bottom">
+        <div class="unity-element">
+
+            <!-- Slider [S] -->
+
+            <div class="slider">
+                <input type="radio" id="slide-1" name="slider" disabled>
+                <input type="radio" id="slide-2" name="slider" disabled>
+                <input type="radio" id="slide-3" name="slider" disabled>
+                <input type="radio" id="slide-4" name="slider" checked disabled>
+            </div>
+
+            <!-- Slider [E] -->
+        </div>
+    </div>
+
+    <!-- Top Page [E] -->
+
+    <!-- Content [S] -->
+
+    <center>
+        <br>
+        <h1 class="white-color-text">
+            HASIL<br>
+            <b>PERMAINAN SEBELUMNYA</b>
+        </h1>
+        <br>
+        <h3 class="white-color-text">Pertandingan berakhir seri. Anda tidak mendapatkan poin, tapi anda berhak membeli
+            bensin</h3>
+        <br>
+        <label for="liter" class="white-color-text">Masukkan liter: </label>
+        <input type="number" id="liter"><br><br>
+
+
+        <img id='barcode'
+            src="https://api.qrserver.com/v1/create-qr-code/?data='NEVER GONNA GIVE YOU UP, NEVER GONNA LET YOU DOWN'&amp;size=400x400"
+            alt="" title="NEVER GONNA GIVE YOU UP, NEVER GONNA LET YOU DOWN" width="200" height="200" />
+        <br><br>
+        <button class="button" onclick="verif()">Oke</button>
+    </center>
+
+
+
+    <!-- Content [E] -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="saveandload.js"></script>
+    <script>
+        function save() {
+            localStorage.setItem('poin', JSON.stringify(poin));
+            localStorage.setItem('bensin', JSON.stringify(bensin));
+        }
+
+        function load() {
+            var poin = JSON.parse(localStorage.getItem('poin'));
+            var bensin = JSON.parse(localStorage.getItem('bensin'));
+        }
+
+        swal('Kamu seri', 'Kamu berhak mendapatkan bensin', 'success')
+
+        function verif() {
+            var poin = JSON.parse(localStorage.getItem('poin'));
+            var bensin = JSON.parse(localStorage.getItem('bensin'));
+            literDibeli = document.getElementById('liter').value
+            if (literDibeli > 0 && literDibeli < 20) {
+                swal('Bensin dibeli', 'Anda sudah mendapatkan bensin', 'success')
+                bensin = bensin + literDibeli
+                localStorage.setItem('poin', JSON.stringify(poin));
+                localStorage.setItem('bensin', JSON.stringify(bensin));
+                window.location.href = "menu.html"
+            } else if (literDibeli < 1) {
+                swal('Maaf', 'Minimal pembelian untuk bensin adalah 1 liter', 'error')
+                return 0
+            } else {
+                swal('Maaf', 'Maksimal pembelian untuk bensin adalah 20 liter', 'error')
+                return 0
+            }
+            
+
+        }
+    </script>
+</body>
+
+</html>

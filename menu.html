@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home MyPertamina</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        html,
+        body {
+            margin: 5px;
+            padding: 5px;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Poin dan bahan bakar -->
+    <div class="d-grid gap-3">
+        <div class="card poin">
+            <div class="card-body">
+                <center>
+                    <img src="assets/coin.jpg" alt="Coin" width='25'> &nbsp; Poin anda: <span id="poin">0</span>
+                    |<img src="assets/pom-bensin.png" alt="Bahan bakar" width="25"> Total pembelian anda: <span
+                        id="bensin">0</span>
+                </center>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Membeli Bahan Bakar -->
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            Yuk, beli bensin!
+        </div>
+        <ul class="list-group list-group-flush">
+            <a href="#">
+                <li class="list-group-item" onclick="beliBensin()">
+                    OKE!!!!
+                </li>
+            </a>
+            <a href="#">
+                <li class="list-group-item" onclick='eventMalas()'>
+                    Males ah.
+                </li>
+            </a>
+        </ul>
+    </div>
+    <br>
+    <!-- Top up -->
+    <div class="card" style="width: 100%;">
+        <div class="card-header">
+            Layanan Top up
+        </div>
+        <ul class="list-group list-group-flush">
+            <a href="https://www.youtube.com/watch?v=lpiB2wMc49g">
+                <li class="list-group-item">Dana</li>
+                <li class="list-group-item">Pulsa</li>
+            </a>
+            <a href="https://www.youtube.com/watch?v=EP62gl-sj2I">
+                <li class="list-group-item">Kartu Kredit Bapak Kau</li>
+            </a>
+        </ul>
+    </div>
+
+    <br>
+
+    <!-- Peta -->
+    <center>
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                <b>Open World (Weekly Quest)</b> <br> <i>(Reward: 2000 Points/tempat)</i>
+            </div>
+            <ul class="list-group list-group-flush">
+                <div class="d-grid gap-3">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.768710880528!2d106.83818231460646!3d-6.196117962426864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f43fe3d62133%3A0xdc71489e3f4ba3ba!2sSPBU%20Pertamina%20Cikini%2031.103.03!5e1!3m2!1sid!2sid!4v1657444155748!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59445.93112305898!2d112.6999613034228!3d-7.290179314307849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7f0a0ab207a43%3A0xd7782841dcf7d17b!2sSPBU%20Pertamina%2051.6011.18%20COCO%20Pakuwon%20City!5e1!3m2!1sid!2sid!4v1657444486268!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59482.34582638127!2d110.37794215271344!3d-7.01048936277641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708c02abbe02b3%3A0xb7700e73a61b6f94!2sSPBU%20Pertamina%2044.502.23%20UNDIP!5e1!3m2!1sid!2sid!4v1657444653946!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118673.6100620573!2d111.8628784054513!3d-8.070804380839508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78e2e4e137c4e9%3A0x9462e60adea5c374!2sSPBU%2054.662.30!5e1!3m2!1sid!2sid!4v1657444811399!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237483.06829671358!2d110.1132070328125!3d-7.836148800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a56e286d70123%3A0x98cb2185e56eb363!2sSPBU%20Pertamina%20Giwangan%20Yogyakarta!5e1!3m2!1sid!2sid!4v1657444855663!5m2!1sid!2sid"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </ul>
+        </div>
+    </center>
+
+
+    <script>
+        function eventMalas() {
+            swal("Apaan sih", "Gitu aja kok males ._.", "error");
+        }
+
+        function beliBensin() {
+            swal("SHAPPPPP!!!", "SHAPPPPP!", 'success')
+            window.location.replace("belibensin.html");
+        }
+
+        function save() {
+            localStorage.setItem('poin', JSON.stringify(poin));
+            localStorage.setItem('bensin', JSON.stringify(bensin));
+        }
+
+        function load() {
+            var poin = localStorage.getItem('poin')
+            var bensin = localStorage.getItem('bensin')
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookkie.min.js"></script>
+    <script>
+        poin = JSON.parse(localStorage.getItem('poin'));
+        bensin = JSON.parse(localStorage.getItem('bensin'));
+        // poin = 5
+        // bensin = 5
+        localStorage.setItem('poin', poin);
+        localStorage.setItem('bensin', bensin);
+        document.getElementById('poin').innerHTML = poin
+        document.getElementById('bensin').innerHTML = bensin
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

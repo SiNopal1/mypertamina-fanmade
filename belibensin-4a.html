@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beli Bensin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('assets/green-color.png');
+        }
+
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #0a7041;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: center;
+        }
+
+        .white-color-text {
+            color: white;
+        }
+
+        html,
+        body {
+            margin: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 14px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Page [S] -->
+
+    <div class="bottom">
+        <div class="unity-element">
+
+            <!-- Slider [S] -->
+
+            <div class="slider">
+                <input type="radio" id="slide-1" name="slider" disabled>
+                <input type="radio" id="slide-2" name="slider" disabled>
+                <input type="radio" id="slide-3" name="slider" disabled>
+                <input type="radio" id="slide-4" name="slider" checked disabled>
+            </div>
+
+            <!-- Slider [E] -->
+        </div>
+    </div>
+
+    <!-- Top Page [E] -->
+
+    <!-- Content [S] -->
+
+    <center>
+        <br>
+        <h1 class="white-color-text">
+            HASIL<br>
+            <b>PERMAINAN SEBELUMNYA</b>
+        </h1>
+        <br>
+        <h2 class="white-color-text">Maaf, anda kalah dalam pertandingan sebelumnya. Untuk itu, anda kehilangan 75 poin.
+            <br> Silahkan coba lagi besok, dan anda tidak mendapatkan bensin hari ini.
+        </h2>
+        <br>
+        <button class="button" onclick="verif()">Oke</button>
+    </center>
+
+
+
+    <!-- Content [E] -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="saveandload.js"></script>
+    <script>
+        function save() {
+            localStorage.setItem('poin', poin);
+            localStorage.setItem('bensin', bensin);
+        }
+
+        function load() {
+            poin = JSON.parse(localStorage.getItem('poin'));
+            bensin = JSON.parse(localStorage.getItem('bensin'));
+        }
+        poin = JSON.parse(localStorage.getItem('poin'));
+        bensin = JSON.parse(localStorage.getItem('bensin'));
+        poin = poin - 75
+        localStorage.setItem('poin', poin);
+        localStorage.setItem('bensin', bensin);
+
+        swal('Kamu kalah', 'Kamu kalah, dan kamu kehilangan 75 poin', 'error')
+
+        function verif() {
+            window.location.href = "menu.html"
+        }
+        save()
+    </script>
+</body>
+
+</html>

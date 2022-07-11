@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beli Bensin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('assets/green-color.png');
+        }
+
+        input[type='radio']:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #d1d3d1;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        input[type='radio']:checked:after {
+            width: 15px;
+            height: 15px;
+            border-radius: 15px;
+            top: -2px;
+            left: -1px;
+            position: relative;
+            background-color: #0a7041;
+            content: '';
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: center;
+        }
+
+        .white-color-text {
+            color: white;
+        }
+
+        html,
+        body {
+            margin: 5px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 14px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Page [S] -->
+
+    <div class="bottom">
+        <div class="unity-element">
+
+            <!-- Slider [S] -->
+
+            <div class="slider">
+                <input type="radio" id="slide-1" name="slider" disabled>
+                <input type="radio" id="slide-2" name="slider" disabled>
+                <input type="radio" id="slide-3" name="slider" checked disabled>
+                <input type="radio" id="slide-4" name="slider" disabled>
+            </div>
+
+            <!-- Slider [E] -->
+        </div>
+    </div>
+
+    <!-- Top Page [E] -->
+
+    <!-- Content [S] -->
+
+    <center>
+        <br>
+        <h1 class="white-color-text">
+            MAINKAN GAME<br>
+            <b>MYPERTAMINA</b>
+        </h1>
+        <br>
+
+        <!-- Countdown -->
+        <div id="timer-start" class="white-color-text"><span id="informasiWaktu"></span><span id="timeleft"></span>
+        </div>
+
+        <!-- Game [S] -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2><b class="white-color-text">Kamu : <span id="poinTim">0</span> </b></h2>
+                </div>
+                <div class="col">
+                    <h2><b class="white-color-text">Musuh : <span id="poinMusuh">0</span></b></h2>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div class="button">
+            <button class="button" onclick="tap()">TAP!</button>
+        </div>
+        <br><br>
+        <!-- Game [E] -->
+
+        <div id="dark-system-alert"></div>
+        <div id="win-statement"></div><br>
+        <!-- <div class="white-color-text"> Dengan memencet enter, anda setuju dengan <abbr title="Kebijakan MyPertamina adalah:
+        (1) Selesaikan misi dengan penuh tanggung jawab 
+        (2) Apabila misi tidak berhasil diselesaikan, maka akan ada konsekuensi
+        (3) Konsekuensi yang didapat jika misi tidak berhasil dijalankan adalah,
+            a) Peringatan tertulis - 1x
+            b) Ponsel berubah menjadi bom dan meledak (dampak kecil) - 2x
+            c) Bom panci didalam motor meledak - 3x">Kebijakan MyPertamina</abbr> </div>
+        <button class="button" onclick="verif()">Submit</button> -->
+    </center>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        // Timer
+        time = 100 // miliseconds
+        phase = 0
+        poinMusuh = 0
+        poinPlayer = 0
+        starts = true
+        setInterval(minusTime, 10)
+
+        // Set Difficulty
+        difficulty = Math.floor(Math.random() * 10)
+        if (difficulty > 6) {
+            document.getElementById('dark-system-alert').innerHTML = '<div class="alert alert-warning alert-dismissible fade show" role="alert"><strong>Peringatan!</strong> Dark System MyPertamina menyala<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+        }
+
+        // Global function
+        minusTime()
+
+
+
+
+
+        // Pengurangan waktu
+        function minusTime() {
+
+            document.getElementById('timeleft').innerHTML = time
+            if (time == 0 && phase == 0) {
+                console.log("yes")
+
+
+                phase = 1
+                time = 1000
+                document.getElementById('informasiWaktu').innerHTML = "Game selesai dalam: "
+            } else if (time == 0 && phase == 1) {
+                winStatement()
+                phase = 2
+            } else if (time > 0 && phase == 0) {
+                time -= 1
+                document.getElementById('informasiWaktu').innerHTML = "Game dimulai dalam: "
+            } else if (phase == 2) {
+                console.log('hi')
+            } else if (time > 0 && phase == 1) {
+                time -= 1
+                if (starts) {
+                    start(time)
+                }
+            }
+        }
+
+        // Player tap
+        function tap() {
+            console.log(phase)
+            if (phase == 1) {
+                poinPlayer += 1
+                document.getElementById('poinTim').innerHTML = poinPlayer
+            } else if (phase == 0) {
+                swal("Error", "Belum mulai ya dek", "error");
+            }
+        }
+
+        // Waktu memulai
+        function start(time) {
+            var intervalMusuh
+            console.log(time)
+            if (time > 0 && starts) {
+                clearInterval(intervalMusuh)
+                intervalMusuh = setInterval(kecepatanMusuh, Math.floor(1000 / (difficulty + 1)));
+                starts = false
+            }
+
+            if (time == 0) {
+                setInterval(kecepatanMusuhCounter, Math.floor(1000 / (difficulty + 1)));
+            }
+        }
+
+        function kecepatanMusuhCounter() {
+            poinMusuh -= 1
+        }
+
+        function kecepatanMusuh() {
+            poinMusuh += 1
+            document.getElementById('poinMusuh').innerHTML = poinMusuh
+        }
+
+        function winStatement() {
+            if (poinMusuh > poinPlayer) {
+                window.location.href = "belibensin-4a.html"
+            } else if (poinMusuh == poinPlayer) {
+                window.location.href = "belibensin-4b.html"
+            } else {
+                window.location.href = "belibensin-4c.html"
+            }
+        }
+
+        function save() {
+            localStorage.setItem('poin', JSON.stringify(poin));
+            localStorage.setItem('bensin', JSON.stringify(bensin));
+        }
+
+        function load() {
+            poin = JSON.parse(localStorage.getItem('poin'));
+            bensin = JSON.parse(localStorage.getItem('bensin'));
+        }
+    </script>
+    <!-- Content [E] -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+    <script>
+        load()
+        function verif() {
+            event.preventDefault()
+        }
+
+
+
+    </script>
+</body>
+
+</html>
